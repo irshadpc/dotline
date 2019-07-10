@@ -17,7 +17,7 @@ const Width = Dimensions.get("window").width;
 const Height = Dimensions.get("window").height;
 const isVertical = Height > Width;
 const Top = isVertical ? ((Height - Width) / 2.0) * 1.25 : 10;
-const Radius = isVertical ? Width / 10 : Width / 25;
+const Radius = isVertical ? Width / 30 : Width / 75;
 
 export default class GesturePassword extends Component {
   constructor(props) {
@@ -31,9 +31,9 @@ export default class GesturePassword extends Component {
     // getInitialState
     let circles = [];
     let Margin = Radius;
-    for (let i = 0; i < 12; i++) {
-      let p = i % 3;
-      let q = parseInt(i / 3);
+    for (let i = 0; i < 100; i++) {
+      let p = i % 10;
+      let q = parseInt(i / 10);
       circles.push({
         isActive: false,
         x: p * (Radius * 2 + Margin) + Margin + Radius,
@@ -164,7 +164,7 @@ export default class GesturePassword extends Component {
 
   resetActive() {
     this.state.lines = [];
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 100; i++) {
       this.state.circles[i].isActive = false;
     }
 
@@ -177,7 +177,7 @@ export default class GesturePassword extends Component {
     let x = touch.x;
     let y = touch.y;
 
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 100; i++) {
       if (helper.isPointInCircle({ x, y }, this.state.circles[i], Radius)) {
         return String(i);
       }
@@ -299,7 +299,7 @@ export default class GesturePassword extends Component {
       }
     }
 
-    if (this.sequence.length === 12) this.onEnd();
+    if (this.sequence.length === 100) this.onEnd();
   }
 
   onEnd(e, g) {

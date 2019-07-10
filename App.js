@@ -54,10 +54,6 @@ export default class HelloWorldApp extends Component {
       this.setState({
         message: "Please input your password."
       });
-    } else {
-      this.setState({
-        message: "Please input your password secondly."
-      });
     }
   }
 
