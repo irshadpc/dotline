@@ -1,4 +1,3 @@
-import * as helper from "./helper";
 import React, { Component } from "react";
 import {
   StyleSheet,
@@ -10,6 +9,8 @@ import {
 } from "react-native";
 import Line from "./line";
 import Circle from "./circle";
+import * as helper from "./helper";
+
 import PropTypes from "prop-types";
 
 const Width = Dimensions.get("window").width;
@@ -30,7 +31,7 @@ export default class GesturePassword extends Component {
     // getInitialState
     let circles = [];
     let Margin = Radius;
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 12; i++) {
       let p = i % 3;
       let q = parseInt(i / 3);
       circles.push({
@@ -48,21 +49,21 @@ export default class GesturePassword extends Component {
 
   componentWillMount() {
     this._panResponder = PanResponder.create({
-      // 要求成为响应者：
+      // Require to be a responder：
       onStartShouldSetPanResponder: (event, gestureState) => true,
       onStartShouldSetPanResponderCapture: (event, gestureState) => true,
       onMoveShouldSetPanResponder: (event, gestureState) => true,
       onMoveShouldSetPanResponderCapture: (event, gestureState) => true,
 
-      // 开始手势操作
+      // Start gesture operation
       onPanResponderGrant: (event, gestureState) => {
         this.onStart(event, gestureState);
       },
-      // 移动操作
+      // Mobile operation
       onPanResponderMove: (event, gestureState) => {
         this.onMove(event, gestureState);
       },
-      // 释放手势
+      // Release gesture
       onPanResponderRelease: (event, gestureState) => {
         this.onEnd(event, gestureState);
       }
@@ -163,7 +164,7 @@ export default class GesturePassword extends Component {
 
   resetActive() {
     this.state.lines = [];
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 12; i++) {
       this.state.circles[i].isActive = false;
     }
 
@@ -176,7 +177,7 @@ export default class GesturePassword extends Component {
     let x = touch.x;
     let y = touch.y;
 
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 12; i++) {
       if (helper.isPointInCircle({ x, y }, this.state.circles[i], Radius)) {
         return String(i);
       }
@@ -186,7 +187,7 @@ export default class GesturePassword extends Component {
   }
 
   getCrossChar(char) {
-    let middles = "13457",
+    let middles = "",
       last = String(this.lastIndex);
 
     if (middles.indexOf(char) > -1 || middles.indexOf(last) > -1) return false;
@@ -298,7 +299,7 @@ export default class GesturePassword extends Component {
       }
     }
 
-    if (this.sequence.length === 9) this.onEnd();
+    if (this.sequence.length === 12) this.onEnd();
   }
 
   onEnd(e, g) {
@@ -373,5 +374,3 @@ const styles = StyleSheet.create({
     fontSize: 14
   }
 });
-
-module.exports = GesturePassword;

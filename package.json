@@ -10,8 +10,7 @@
   "dependencies": {
     "prop-types": "^15.7.2",
     "react": "16.8.6",
-    "react-native": "0.60.0",
-    "react-native-gesture-password": "^0.3.6"
+    "react-native": "0.60.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

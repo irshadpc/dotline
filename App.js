@@ -8,7 +8,7 @@
 import React, { Component } from "react";
 import { AppRegistry, StyleSheet, Text, View } from "react-native";
 
-import PasswordGesture from "react-native-gesture-password";
+import GesturePassword from "./src/index.js";
 
 var Password1 = "";
 
@@ -63,12 +63,12 @@ export default class HelloWorldApp extends Component {
 
   render() {
     return (
-      <PasswordGesture
+      <GesturePassword
         ref="pg"
         status={this.state.status}
         message={this.state.message}
         onStart={() => this.onStart()}
-        onEnd={password => this.onEnd(password)}
+        onEnd={password => this.onEnd()}
         innerCircle={true}
         outerCircle={true}
       />

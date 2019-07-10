@@ -66,5 +66,3 @@ const styles = StyleSheet.create({
     backgroundColor: "#8E91A8"
   }
 });
-
-module.exports = Circle; // for compatible with require only

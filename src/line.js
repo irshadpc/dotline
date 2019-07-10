@@ -82,5 +82,3 @@ const styles = StyleSheet.create({
     height: 1
   }
 });
-
-module.exports = Line; // for compatible with require only
